@@ -1,0 +1,26 @@
+How to use the included commands:
+Replace any <blah> with relative context.
+
+Unpacking -------
+Unzip the files to the same directory, available on each machine.
+
+Compiling -------
+cd to the unzipped directory.
+mpic++ mpi-md5.cpp -o mpi-md5
+
+Prepping -------
+Replace names in machinelist with names of your processors for multiple machines.
+
+Replicating -----
+machines="<insert other machine names here with a space in between>"
+for f in ${machines} ; do scp ./mpi-md5  <username>@$f:/<absolute path>/ ; scp ./<machinefile>  <username>@$f:/<absolute path>/ ; done
+
+Running --------
+run once
+mpirun -np <number of procs.> -machinefile <machinefile> mpi-md5
+
+Use--------
+Enter an MD5 at prompt
+
+MD5 Command-------
+echo -n <password string> | md5sum
